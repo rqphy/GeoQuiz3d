@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { GeoJSONLoader, type Feature } from "three-geojson"
 import Country from "./country"
-import { useControls } from "leva"
 
 // Color palette for countries
 const COUNTRY_COLORS = [
@@ -32,27 +31,6 @@ export default function GlobeViewer() {
 	const [features, setFeatures] = useState<Feature[]>([])
 	const [loading, setLoading] = useState(true)
 	const [hoveredCountry, setHoveredCountry] = useState<string | null>(null)
-
-	const { rotationX, rotationY, rotationZ } = useControls("Globe Rotation", {
-		rotationX: {
-			value: -Math.PI / 2,
-			min: -Math.PI,
-			max: Math.PI,
-			step: 0.01,
-		},
-		rotationY: {
-			value: 0,
-			min: -Math.PI,
-			max: Math.PI,
-			step: 0.01,
-		},
-		rotationZ: {
-			value: -Math.PI / 2,
-			min: -Math.PI,
-			max: Math.PI,
-			step: 0.01,
-		},
-	})
 
 	useEffect(() => {
 		const loader = new GeoJSONLoader()
@@ -94,7 +72,7 @@ export default function GlobeViewer() {
 
 	return (
 		<group
-			rotation={[rotationX, rotationY, rotationZ]}
+			rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
 			scale={[0.45, 0.45, 0.45]}
 		>
 			{/* Base sphere (ocean) */}
@@ -115,8 +93,8 @@ export default function GlobeViewer() {
 						key={name}
 						name={name}
 						polygons={feature.polygons}
-						color={isHovered ? 0xffffff : baseColor}
-						offset={isHovered ? 0.005 : 0.001}
+						color={isHovered ? 0xffffff : 0xf5ee9e}
+						offset={isHovered ? 0.12 : 0.1}
 						onClick={handleCountryClick}
 						onPointerEnter={handlePointerEnter}
 						onPointerLeave={handlePointerLeave}
