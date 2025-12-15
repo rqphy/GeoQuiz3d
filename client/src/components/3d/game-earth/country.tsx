@@ -20,7 +20,7 @@ export default function Country({
 	name,
 	polygons,
 	color = 0x44aa88,
-	offset = 0.001,
+	offset = 0.1,
 	onClick,
 	onPointerEnter,
 	onPointerLeave,
@@ -49,7 +49,13 @@ export default function Country({
 			onPointerEnter={() => onPointerEnter?.(name)}
 			onPointerLeave={() => onPointerLeave?.(name)}
 		>
-			<meshStandardMaterial color={color} side={THREE.DoubleSide} />
+			<meshStandardMaterial
+				color={color}
+				side={THREE.FrontSide}
+				polygonOffset={true}
+				polygonOffsetFactor={-1}
+				polygonOffsetUnits={-1}
+			/>
 		</primitive>
 	)
 }
