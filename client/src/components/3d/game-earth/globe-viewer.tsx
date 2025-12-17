@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { GeoJSONLoader, type Feature } from "three-geojson"
 import Country from "./country"
 import Atmosphere from "./atmosphere"
+import { useFrame } from "@react-three/fiber"
+import * as THREE from "three"
 
 // Color palette for countries
 const COUNTRY_COLORS = [
@@ -32,6 +34,7 @@ export default function GlobeViewer() {
 	const [features, setFeatures] = useState<Feature[]>([])
 	const [loading, setLoading] = useState(true)
 	const [hoveredCountry, setHoveredCountry] = useState<string | null>(null)
+	const globeRef = useRef<THREE.Mesh>(null)
 
 	useEffect(() => {
 		const loader = new GeoJSONLoader()
@@ -47,6 +50,12 @@ export default function GlobeViewer() {
 				setLoading(false)
 			})
 	}, [])
+
+	useFrame(() => {
+		if (globeRef.current) {
+			globeRef.current.rotation.z += 0.0002
+		}
+	})
 
 	const handleCountryClick = (name: string) => {
 		console.log("Clicked:", name)
@@ -75,6 +84,7 @@ export default function GlobeViewer() {
 		<group
 			rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
 			scale={[0.45, 0.45, 0.45]}
+			ref={globeRef}
 		>
 			<Atmosphere radius={105} color="#2a6f97" />
 
