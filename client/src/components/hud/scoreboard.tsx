@@ -22,7 +22,7 @@ export default function Scoreboard() {
 	return (
 		<div
 			className={`flex flex-col gap-2 p-4 bg-background rounded-lg max-w-xs relative transition-transform duration-300 ease-in-out ${
-				isExpanded ? "translate-x-0" : "translate-x-[100%]"
+				isExpanded ? "translate-x-0" : "translate-x-full"
 			}`}
 		>
 			<h2 className="text-foreground text-md font-bold mb-2">

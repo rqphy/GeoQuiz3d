@@ -6,29 +6,29 @@ import { useFrame } from "@react-three/fiber"
 import * as THREE from "three"
 
 // Color palette for countries
-const COUNTRY_COLORS = [
-	0x4ecdc4, // Teal
-	0xff6b6b, // Coral
-	0x95e1d3, // Mint
-	0xf38181, // Salmon
-	0xfce38a, // Yellow
-	0xdff9fb, // Light blue
-	0xf9ca24, // Gold
-	0x6ab04c, // Green
-	0xbadc58, // Lime
-	0x22a6b3, // Cyan
-	0xbe2edd, // Purple
-	0xf0932b, // Orange
-]
+// const COUNTRY_COLORS = [
+// 	0x4ecdc4, // Teal
+// 	0xff6b6b, // Coral
+// 	0x95e1d3, // Mint
+// 	0xf38181, // Salmon
+// 	0xfce38a, // Yellow
+// 	0xdff9fb, // Light blue
+// 	0xf9ca24, // Gold
+// 	0x6ab04c, // Green
+// 	0xbadc58, // Lime
+// 	0x22a6b3, // Cyan
+// 	0xbe2edd, // Purple
+// 	0xf0932b, // Orange
+// ]
 
 // Get a consistent color based on country name
-function getCountryColor(name: string): number {
-	let hash = 0
-	for (let i = 0; i < name.length; i++) {
-		hash = name.charCodeAt(i) + ((hash << 5) - hash)
-	}
-	return COUNTRY_COLORS[Math.abs(hash) % COUNTRY_COLORS.length]
-}
+// function getCountryColor(name: string): number {
+// 	let hash = 0
+// 	for (let i = 0; i < name.length; i++) {
+// 		hash = name.charCodeAt(i) + ((hash << 5) - hash)
+// 	}
+// 	return COUNTRY_COLORS[Math.abs(hash) % COUNTRY_COLORS.length]
+// }
 
 export default function GlobeViewer() {
 	const [features, setFeatures] = useState<Feature[]>([])
@@ -98,7 +98,7 @@ export default function GlobeViewer() {
 				const name =
 					(feature.properties?.name as string) || `country-${index}`
 				const isHovered = hoveredCountry === name
-				const baseColor = getCountryColor(name)
+				// const baseColor = getCountryColor(name)
 
 				return (
 					<Country
