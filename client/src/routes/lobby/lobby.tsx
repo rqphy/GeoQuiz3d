@@ -13,7 +13,11 @@ export default function Lobby() {
 				<Canvas camera={{ position: [0, 50, 80] }}>
 					<ambientLight intensity={1.8} />
 					<GlobeViewer />
-					<OrbitControls />
+					<OrbitControls
+						enablePan={false}
+						minZoom={2}
+						maxZoom={1.5}
+					/>
 				</Canvas>
 			</div>
 			<Hud />
