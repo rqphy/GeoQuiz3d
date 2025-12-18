@@ -10,7 +10,7 @@ export default function Lobby() {
 			<h1>Lobby</h1>
 			<Link to="/">Home</Link>
 			<div className="absolute top-0 left-0 w-full h-screen bg-[#012a4a]">
-				<Canvas camera={{ position: [0, 60, 80] }}>
+				<Canvas camera={{ position: [0, 50, 80] }}>
 					<ambientLight intensity={1.8} />
 					<GlobeViewer />
 					<OrbitControls />
