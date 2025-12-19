@@ -1,20 +1,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-
-type Player = {
-	name: string
-	score: number
-	color: string
-	hasFoundAnswer: boolean
-}
-
-const FAKE_PLAYERS: Player[] = [
-	{ name: "Alice", score: 1200, color: "#FF5733", hasFoundAnswer: true },
-	{ name: "Bob", score: 850, color: "#33FF57", hasFoundAnswer: false },
-	{ name: "Charlie", score: 1500, color: "#3357FF", hasFoundAnswer: true },
-	{ name: "David", score: 600, color: "#F333FF", hasFoundAnswer: false },
-]
+import { MOCK_PLAYERS } from "@/mocks/data"
 
 export default function Scoreboard() {
 	const [isExpanded, setIsExpanded] = useState(true)
@@ -28,7 +15,7 @@ export default function Scoreboard() {
 			<h2 className="text-foreground text-md font-bold mb-2">
 				Scoreboard
 			</h2>
-			{FAKE_PLAYERS.sort((a, b) => b.score - a.score).map((player) => (
+			{MOCK_PLAYERS.sort((a, b) => b.score - a.score).map((player) => (
 				<div
 					key={player.name}
 					className="flex justify-between items-center gap-2 p-2 rounded transition-colors duration-300"

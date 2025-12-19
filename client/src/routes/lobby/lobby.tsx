@@ -1,26 +1,39 @@
-import { Link } from "react-router"
-import GlobeViewer from "@/components/3d/game-earth/globe-viewer"
+import { useParams, useLocation } from "react-router"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei"
-import Hud from "@/components/hud/hud"
+import Experience from "@/components/3d/dot-earth/experience"
 
 export default function Lobby() {
+	const { roomId } = useParams<{ roomId: string }>()
+	const location = useLocation()
+	const username = location.state?.username
+
 	return (
 		<>
-			<h1>Lobby</h1>
-			<Link to="/">Home</Link>
-			<div className="absolute top-0 left-0 w-full h-screen bg-[#012a4a]">
-				<Canvas camera={{ position: [0, 50, 80] }}>
-					<ambientLight intensity={1.8} />
-					<GlobeViewer />
-					<OrbitControls
-						enablePan={false}
-						minZoom={2}
-						maxZoom={1.5}
-					/>
+			<div className="absolute top-0 left-0 w-full h-screen">
+				<Canvas camera={{ fov: 30, position: [6, 0, 0] }}>
+					<Experience />
 				</Canvas>
 			</div>
-			<Hud />
+
+			{/* Room Info Overlay */}
+			<div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 bg-black/80 backdrop-blur-sm border border-secondary/30 rounded-lg px-6 py-4">
+				<div className="text-center">
+					<p className="text-secondary/70 text-sm uppercase tracking-wider mb-1">
+						Code de la partie
+					</p>
+					<p className="text-secondary text-3xl font-bold tracking-widest">
+						{roomId}
+					</p>
+					{username && (
+						<p className="text-secondary/70 text-sm mt-2">
+							Bienvenue,{" "}
+							<span className="text-secondary font-medium">
+								{username}
+							</span>
+						</p>
+					)}
+				</div>
+			</div>
 		</>
 	)
 }
