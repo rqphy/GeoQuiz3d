@@ -36,6 +36,7 @@ export default function LobbyRoom() {
 							<PlayerCard
 								player={player}
 								isYou={player.id === MOCK_PLAYERS[0].id}
+								isHost={player.id === MOCK_PLAYERS[0].id}
 							/>
 						</li>
 					))}
