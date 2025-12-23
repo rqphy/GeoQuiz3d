@@ -7,11 +7,14 @@ export const SOCKET_EVENTS = {
 	LEAVE_ROOM: "leave_room",
 	PLAYER_JOINED: "player_joined",
 	PLAYER_LEFT: "player_left",
+	ROOM_CREATED: "room_created",
 
 	START_GAME: "start_game",
 	GAME_STARTED: "game_started",
 	END_GAME: "end_game",
 	NEW_ROUND: "new_round",
 	END_ROUND: "end_round",
-	SUBMIT_ANSWER: "submit_answer",
+    SUBMIT_ANSWER: "submit_answer",
+    
+    ERROR: "error"
 }

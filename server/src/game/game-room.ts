@@ -120,7 +120,7 @@ export class GameRoom {
 		})
 	}
 
-	getGameState(): GameState {
+	getState(): GameState {
 		return {
 			roomId: this.id,
 			players: Array.from(this.players.values()),
